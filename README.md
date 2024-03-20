@@ -34,13 +34,13 @@ This is a simple weather application built with React.js and styled with Tailwin
    ```
 # Technologies
 
- -React+Vite
+- React+Vite
 
  
- -TailwindCSS
+- TailwindCSS
 
 
 # Contributing
 
--Contributions are welcome! Feel free to open an issue or submit a pull request.
+- Contributions are welcome! Feel free to open an issue or submit a pull request.
    
