@@ -20,7 +20,7 @@ This is a simple weather application built with React.js and styled with Tailwin
 
 2. **Navigate into the project directory:**
    ```bash
-   cd React-Weather-App
+   cd react-weather-app
    ```
 3. **Install Dependencies:**
    ```bash
@@ -33,9 +33,12 @@ This is a simple weather application built with React.js and styled with Tailwin
    https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=e2e4ac3a6533ab87f2366eaa5f1bd0f5
    ```
 #Texhnologies
+
  -React+Vite
+ 
  -TailwindCSS
 
 #Contributing
+
 -Contributions are welcome! Feel free to open an issue or submit a pull request.
    
