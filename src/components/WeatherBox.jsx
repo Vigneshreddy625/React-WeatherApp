@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import useWeatherApp from "../hooks/Weather";
 
 function WeatherBox() {
   const { input, setInput, location, temp, handleSubmit } = useWeatherApp();
+  const clockRef = useRef(null);
+  const [time, setTime] = useState('');
+  let clock = new Date().getHours();
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      const date = new Date();
+      setTime(date.toLocaleTimeString());
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <>
@@ -25,7 +36,7 @@ function WeatherBox() {
         <div className="flex items-center justify-center">
           <div
             className={`w-64 md:mr-20 mb-10 transition duration-500 ease-in-out transform rounded-lg hover:scale-105 cursor-pointer border b-gray-400  flex flex-col justify-center items-center text-center p-6 ${
-              Math.floor(temp - 273.15) && Math.floor(temp - 273.15) < 25
+              Math.floor(temp - 273.15) && Math.floor(temp - 273.15) < 25 
                 ? "bg-gray-900"
                 : "bg-white"
             } my-10`}
@@ -40,7 +51,11 @@ function WeatherBox() {
               >
                 Today
               </span>
-              <br />
+              <span ref={clockRef}className={`uppercase ${
+                  Math.floor(temp - 273.15) < 25
+                    ? "text-white"
+                    : "text-gray-500"
+                }`}>Time:{" "}{time}</span>
               <span
                 className={`font-normal ${
                   temp && Math.floor(temp - 273.15) < 25
@@ -52,7 +67,7 @@ function WeatherBox() {
               </span>
             </div>
             <div className="w-32 h-32 flex items-center justify-center">
-              {Math.floor(temp - 273.15) > 25 && Math.floor(temp - 273.15) ? (
+              {Math.floor(temp - 273.15) > 25 && Math.floor(temp - 273.15) || clock < 18 ? (
                 <svg
                   width="95"
                   height="72"
@@ -179,10 +194,10 @@ function WeatherBox() {
                 </svg>
               )}
             </div>
-            {Math.floor(temp - 273.15) < 25  ? (
+            {Math.floor(temp - 273.15) < 25 && temp  ? (
   <p className="text-white mb-2">Partly Cloudy</p>
 ) : (
-  <p className="text-gray-500 mb-2">Sunny</p>
+  <p className="text-gray-900 mb-2">Sunny</p>
 )}
             {!isNaN(temp) &&
             (!Math.floor(temp - 273.15) || Math.floor(temp - 273.15) < 0) ? (
@@ -203,7 +218,7 @@ function WeatherBox() {
             ) : (
               <div
                 className={`text-3xl font-bold ${
-                  !isNaN(temp) && Math.floor(temp - 273.15) < 20
+                  !isNaN(temp) && Math.floor(temp - 273.15) < 25
                     ? "text-white"
                     : "text-gray-700"
                 } mb-6`}

@@ -10,6 +10,7 @@ function useWeatherApp() {
         fetchWeatherData();
         setInput('')
     };
+    
 
     const fetchWeatherData = () => {
         if (input) {
