@@ -26,19 +26,21 @@ This is a simple weather application built with React.js and styled with Tailwin
    ```bash
    npm install
    ```
-#Usage
+# Usage
  - Obtain API Key from OpenWeather API or
  - you can use mine
    ```bash
    https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=e2e4ac3a6533ab87f2366eaa5f1bd0f5
    ```
-#Texhnologies
+# Technologies
 
  -React+Vite
+
  
  -TailwindCSS
 
-#Contributing
+
+# Contributing
 
 -Contributions are welcome! Feel free to open an issue or submit a pull request.
    
